@@ -29,7 +29,7 @@ class AuthController extends Controller
         }
         return response()->json([
             "user" => $user,
-            "token" => $user->createToken()->plainTextToken
+            "token" => $user->createToken($user->email)->plainTextToken
         ]);
     }
 
@@ -52,7 +52,7 @@ class AuthController extends Controller
         ]);
         return response()->json([
             "user" => $createdUser,
-            "token" => $createdUser->createToken()->plainTextToken
+            "token" => $createdUser->createToken($user->email)->plainTextToken
         ]);
     }
 

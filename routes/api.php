@@ -18,4 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::middleware('auth-sanctum')->post('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
+
+Route::middleware('auth:sanctum')->apiResource('recipes', RecipeController::class);
+
+
+// GET /recipes - vrati sve - metoda index
+// POST /recipes - kreiraj - metoda store
+// GET /recipes/{id} - vrati sa tim id jem - metoda show
+// PUT /recipes/{id} - izmeni recept sa datim id jem na osnovu tela zahteva - metoda update
+// DELETE /recipes/{id} - obrisi recept sa datim id jem - metoda destroy 
