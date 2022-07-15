@@ -68,6 +68,13 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+
+        foreach($recipe->ingredients as $ingrediet){
+            $ingrediet->delete();
+        }
+        foreach($recipe->steps as $step){
+            $step->delete();
+        }
         $recipe->delete();
         return response()->json("Uspesno obrisan: $recipe");
     }
